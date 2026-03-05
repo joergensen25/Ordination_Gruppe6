@@ -40,6 +40,6 @@ public class DagligSkaev extends Ordination {
 
     @Override
     public String getType() {
-        return "";
+        return "Daglig skæv ordination";
     }
 }
