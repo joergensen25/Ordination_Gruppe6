@@ -10,10 +10,7 @@ public class DagligSkaev extends Ordination {
 
     public DagligSkaev(LocalDate startDato, LocalDate slutDato) {
         super(startDato, slutDato);
-    }
 
-    public void opretDosis(LocalTime tid, double antal) {
-        // TODO
     }
 
     @Override
