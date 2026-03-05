@@ -30,20 +30,20 @@ public class DagligFast extends Ordination {
 
     @Override
     public double samletDosis() {
-        int samletAntal = 0;
-        for (Dosis dosis : doser) {
-            samletAntal += dosis.getAntal();
-        }
-        return samletAntal;
+        return doegnDosis() * antalDage();
     }
 
     @Override
     public double doegnDosis() {
-        return 0;
+        double samletTotal = 0;
+        for (Dosis d : doser){
+            samletTotal += d.getAntal();
+        }
+        return samletTotal;
     }
 
     @Override
     public String getType() {
-        return "";
+        return "Daglig fast ordination";
     }
 }
