@@ -3,6 +3,7 @@ package ordination;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class DagligSkaev extends Ordination {
 
@@ -41,5 +42,9 @@ public class DagligSkaev extends Ordination {
     @Override
     public String getType() {
         return "Daglig skæv ordination";
+    }
+
+    public ArrayList<Dosis> getDoser() {
+        return doser;
     }
 }
