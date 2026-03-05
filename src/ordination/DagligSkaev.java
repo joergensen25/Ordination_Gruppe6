@@ -26,14 +26,16 @@ public class DagligSkaev extends Ordination {
 
     @Override
     public double samletDosis() {
-        return 0;
+        return doegnDosis() * antalDage();
     }
 
     @Override
     public double doegnDosis() {
         double sum = 0.0;
-
-        return 0;
+        for (Dosis d : doser) {
+            sum += d.getAntal();
+        }
+        return sum;
     }
 
     @Override
