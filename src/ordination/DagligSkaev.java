@@ -12,8 +12,16 @@ public class DagligSkaev extends Ordination {
         super(startDato, slutDato);
     }
 
-    public void opretDosis(LocalTime tid, double antal) {
-        // TODO
+    public Dosis opretDosis(LocalTime tid, double antal) {
+        if (tid == null) {
+            throw new IllegalArgumentException("Tid kan ikke være nul.");
+        }
+        if (antal <= 0) {
+            throw new IllegalArgumentException("Antal skal være større end nul.");
+        }
+        Dosis d = new Dosis(tid, antal);
+        doser.add(d);
+        return d;
     }
 
     @Override
@@ -23,6 +31,8 @@ public class DagligSkaev extends Ordination {
 
     @Override
     public double doegnDosis() {
+        double sum = 0.0;
+
         return 0;
     }
 
