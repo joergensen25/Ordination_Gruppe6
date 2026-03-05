@@ -11,8 +11,5 @@ public class App {
 	public static void main(String[] args) {
 		Application.launch(StartVindue.class);
 
-		DagligSkaev ds = new DagligSkaev(LocalDate.of(2025, 7, 11), LocalDate.of(2025,7,14));
-		ds.opretDosis(LocalTime.of(14, 30), 5);
-		System.out.println(ds.samletDosis());
 	}
 }

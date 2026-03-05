@@ -9,8 +9,8 @@ public class DagligSkaev extends Ordination {
 
     private final ArrayList<Dosis> doser = new ArrayList<>();
 
-    public DagligSkaev(LocalDate startDato, LocalDate slutDato) {
-        super(startDato, slutDato);
+    public DagligSkaev(LocalDate startDato, LocalDate slutDato, Patient patient) {
+        super(startDato, slutDato, patient);
     }
 
     public Dosis opretDosis(LocalTime tid, double antal) {
