@@ -46,7 +46,6 @@ public class PN extends Ordination {
 
     @Override
     public double samletDosis() {
-        // TODO
         return anvendtOrdinationer.size() * antalEnheder;
     }
 

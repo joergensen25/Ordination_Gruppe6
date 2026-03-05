@@ -6,6 +6,7 @@ import java.time.temporal.ChronoUnit;
 public abstract class Ordination {
     private LocalDate startDen;
     private LocalDate slutDen;
+    private Laegemiddel laegemiddel;
 
 
 
@@ -17,6 +18,10 @@ public abstract class Ordination {
 
     }
 
+    public Laegemiddel getLaegemiddel() {
+        return laegemiddel;
+    }
+
     public LocalDate getStartDen() {
         return startDen;
     }	
@@ -25,6 +30,11 @@ public abstract class Ordination {
         return slutDen;
     }
 
+    public void setLaegemiddel(Laegemiddel laegemiddel){
+        if (this.laegemiddel != laegemiddel){
+            this.laegemiddel = laegemiddel;
+        }
+    }
     /**
      * Antal hele dage mellem startdato og slutdato. Begge dage inklusive.
      * @return antal dage ordinationen gælder for
