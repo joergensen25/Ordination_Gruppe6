@@ -33,6 +33,7 @@ public abstract class Ordination {
         return (int) ChronoUnit.DAYS.between(startDen, slutDen) + 1;
     }
 
+
     @Override
     public String toString() {
         return startDen.toString();
