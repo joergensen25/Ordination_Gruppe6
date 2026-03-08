@@ -8,6 +8,9 @@ public class Patient {
     private double vaegt;
 
     private final ArrayList<Ordination> ordinationer = new ArrayList<>();
+    public ArrayList<Ordination> getOrdinationer() {
+        return new ArrayList<>(ordinationer);
+    }
 
     public Patient(String cprnr, String navn, double vaegt) {
         this.cprnr = cprnr;
