@@ -77,9 +77,15 @@ public class Controller {
 		if (!checkStartFoerSlut(startDen, slutDen)) {
 			throw new IllegalArgumentException("Startdato skal være før eller lig med slutdato");
 		}
-		DagligSkaev ds = new DagligSkaev(startDen, slutDen, patient);
-		patient.addOrdination(ds);
+		if (klokkeSlet.length != antalEnheder.length) {
+			throw new IllegalArgumentException("Antallet af klokkeslæt skal være lig antallet af enheder");
+		}
 
+		DagligSkaev ds = new DagligSkaev(startDen, slutDen, patient);
+		for (int i = 0; i < klokkeSlet.length; i++) {
+			ds.opretDosis(klokkeSlet[i], antalEnheder[i]);
+		}
+		patient.addOrdination(ds);
 		return ds;
 	}
 
