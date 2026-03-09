@@ -38,7 +38,7 @@ public class Controller {
 		if (!checkStartFoerSlut(startDen, slutDen)) {
 			throw new IllegalArgumentException("Startdato skal være før eller lig med slutdato");
 		}
-		PN pn = new PN(startDen, slutDen, patient, laegemiddel);
+		PN pn = new PN(startDen, slutDen, patient);
 		patient.addOrdination(pn);
 
 		return pn;
@@ -57,7 +57,7 @@ public class Controller {
 		if (!checkStartFoerSlut(startDen, slutDen)) {
 			throw new IllegalArgumentException("Startdato skal være før eller lig med slutdato");
 		}
-		DagligFast df = new DagligFast(startDen, slutDen, patient, laegemiddel);
+		DagligFast df = new DagligFast(startDen, slutDen, patient);
 		patient.addOrdination(df);
 
 		return df;
@@ -81,7 +81,7 @@ public class Controller {
 			throw new IllegalArgumentException("Antallet af klokkeslæt skal være lig antallet af enheder");
 		}
 
-		DagligSkaev ds = new DagligSkaev(startDen, slutDen, patient, laegemiddel);
+		DagligSkaev ds = new DagligSkaev(startDen, slutDen, patient);
 		for (int i = 0; i < klokkeSlet.length; i++) {
 			ds.opretDosis(klokkeSlet[i], antalEnheder[i]);
 		}
