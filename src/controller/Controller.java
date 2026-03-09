@@ -90,6 +90,7 @@ public class Controller {
 		for (int i = 0; i < klokkeSlet.length; i++) {
 			ds.opretDosis(klokkeSlet[i], antalEnheder[i]);
 		}
+		ds.setLaegemiddel(laegemiddel);
 		patient.addOrdination(ds);
 		return ds;
 	}
