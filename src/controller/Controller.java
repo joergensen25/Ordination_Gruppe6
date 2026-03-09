@@ -40,6 +40,7 @@ public class Controller {
 		}
 		PN pn = new PN(startDen, slutDen, patient);
 		pn.setLaegemiddel(laegemiddel);
+		pn.setAntalEnheder(antal);
 
 		patient.addOrdination(pn);
 
@@ -62,6 +63,7 @@ public class Controller {
 		}
 		DagligFast df = new DagligFast(startDen, slutDen, patient);
 		df.setLaegemiddel(laegemiddel);
+		df.createDosis(morgenAntal,middagAntal,aftenAntal,natAntal);
 
 		patient.addOrdination(df);
 

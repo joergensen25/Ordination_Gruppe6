@@ -6,7 +6,7 @@ import java.time.LocalTime;
 
 public class DagligFast extends Ordination {
     private Dosis[] doser = new Dosis[4];
-    private int antalDoser = 0;
+    // 0 = morgen, 1 = middag, 2 = aften, 3 = nat
 
     public DagligFast(LocalDate startDen, LocalDate slutDen, Patient patient) {
         super(startDen, slutDen, patient);
@@ -16,15 +16,11 @@ public class DagligFast extends Ordination {
         return doser;
     }
 
-    public Dosis createDosis(LocalTime tid, double antal) {
-        if (antalDoser < 4) {
-            Dosis dosis = new Dosis(tid, antal);
-            doser[antalDoser] = dosis;
-            antalDoser++;
-            return dosis;
-        } else {
-            return null;
-        }
+    public void createDosis(double morgen, double middag, double aften, double nat) {
+        doser[0] = new Dosis(LocalTime.of(6,0), morgen);
+        doser[1] = new Dosis(LocalTime.of(13,0), middag);
+        doser[2] = new Dosis(LocalTime.of(18,0), aften);
+        doser[3] = new Dosis(LocalTime.of(23,0), nat);
     }
 
     @Override

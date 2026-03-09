@@ -33,6 +33,11 @@ public class PN extends Ordination {
     @Override
     public double doegnDosis() {
         //(antal gange ordinationen er anvendt * antal enheder) / (antal dage mellem første og sidste givning)
+        if (anvendtOrdinationer.isEmpty())
+        {
+            return 0;
+        }
+
         double antalModtaget = anvendtOrdinationer.size() * antalEnheder;
         double dageModtaget = ChronoUnit.DAYS.between(anvendtOrdinationer.getFirst(),anvendtOrdinationer.getLast()) + 1;
 
@@ -61,4 +66,7 @@ public class PN extends Ordination {
         return antalEnheder;
     }
 
+    public void setAntalEnheder(double antalEnheder) {
+        this.antalEnheder = antalEnheder;
+    }
 }
