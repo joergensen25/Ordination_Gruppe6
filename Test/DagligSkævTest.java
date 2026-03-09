@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class DagligSkævTest {
 
@@ -26,11 +27,13 @@ public class DagligSkævTest {
 
     @Test
     void testOpretDagligSkaev() {
+        // Opretter 4 tider
         LocalTime[] tider = {
                 LocalTime.of(8, 0),
                 LocalTime.of(12, 0),
                 LocalTime.of(16, 0)
         };
+        // Opretter 3 antal
         double[] antal = {1.0, 2.0, 3.0};
 
         DagligSkaev ds = controller.opretDagligSkaevOrdination(
@@ -45,5 +48,45 @@ public class DagligSkævTest {
         assertEquals(30.0, ds.samletDosis());
     }
 
+    @Test
+    void opretDagligSkaevUgyldigDato() {
+        LocalTime[] tider = {
+                LocalTime.of(8, 0),
+                LocalTime.of(12, 0),
+                LocalTime.of(16, 0)
+        };
+        double[] antal = {1.0, 2.0, 3.0};
+        assertThrows(IllegalArgumentException.class, () -> {
+            controller.opretDagligSkaevOrdination(
+                    LocalDate.of(2026, 9, 5),
+                    LocalDate.of(2026, 9, 1),
+                    patient,
+                    laegemiddel,
+                    tider,
+                    antal
+            );
+        });
+    }
 
+    @Test
+    void opretDagligSkaevForskelligLaengde() {
+        LocalTime[] tider = {
+                LocalTime.of(8,0),
+                LocalTime.of(12,0),
+                LocalTime.of(16,0)
+        };
+
+        double[] antal = {1.0, 2.0, 3.0, 4.0};
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            controller.opretDagligSkaevOrdination(
+                    LocalDate.of(2026, 9, 1),
+                    LocalDate.of(2026, 9, 5),
+                    patient,
+                    laegemiddel,
+                    tider,
+                    antal
+            );
+        });
+    }
 }
