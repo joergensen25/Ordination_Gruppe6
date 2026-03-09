@@ -1,12 +1,11 @@
 package ordination;
 
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
+
 
 public class DagligFast extends Ordination {
-    private final Dosis[] doser = new Dosis[4];
+    private Dosis[] doser = new Dosis[4];
     private int antalDoser = 0;
 
     public DagligFast(LocalDate startDen, LocalDate slutDen, Patient patient) {
@@ -36,8 +35,10 @@ public class DagligFast extends Ordination {
     @Override
     public double doegnDosis() {
         double samletTotal = 0;
-        for (Dosis d : doser){
-            samletTotal += d.getAntal();
+        for (Dosis d : doser) {
+            if (d != null) {
+                samletTotal += d.getAntal();
+            }
         }
         return samletTotal;
     }
