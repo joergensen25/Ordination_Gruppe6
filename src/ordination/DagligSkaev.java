@@ -13,7 +13,7 @@ public class DagligSkaev extends Ordination {
         super(startDen, slutDen, patient);
     }
 
-    public Dosis opretDosis(LocalTime tid, double antal) {
+    public void opretDosis(LocalTime tid, double antal) {
         if (tid == null) {
             throw new IllegalArgumentException("Tid kan ikke være nul.");
         }
@@ -22,7 +22,6 @@ public class DagligSkaev extends Ordination {
         }
         Dosis d = new Dosis(tid, antal);
         doser.add(d);
-        return d;
     }
 
     @Override
