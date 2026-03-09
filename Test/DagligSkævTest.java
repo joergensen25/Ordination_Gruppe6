@@ -18,8 +18,9 @@ public class DagligSkævTest {
     private Laegemiddel laegemiddel;
 
 
+    // setUp med fælles Testdata
     @BeforeEach
-    void setUp() throws Exception {
+    void setUp() {
         controller = Controller.getTestController();
         patient = new Patient("111111-1111", "Test", 67.67);
         laegemiddel = new Laegemiddel("Percocet", 0.25, 0.25, 0.25, "Styk");
@@ -27,7 +28,7 @@ public class DagligSkævTest {
 
     @Test
     void testOpretDagligSkaev() {
-        // Opretter 4 tider
+        // Opretter 3 tidspunkter
         LocalTime[] tider = {
                 LocalTime.of(8, 0),
                 LocalTime.of(12, 0),
@@ -50,11 +51,14 @@ public class DagligSkævTest {
 
     @Test
     void opretDagligSkaevUgyldigDato() {
+        // Opretter 3 tidspunkter
         LocalTime[] tider = {
                 LocalTime.of(8, 0),
                 LocalTime.of(12, 0),
                 LocalTime.of(16, 0)
         };
+        // Opretter 3 antal
+        // Sætter startdato efter slutdato
         double[] antal = {1.0, 2.0, 3.0};
         assertThrows(IllegalArgumentException.class, () -> {
             controller.opretDagligSkaevOrdination(
@@ -70,12 +74,13 @@ public class DagligSkævTest {
 
     @Test
     void opretDagligSkaevForskelligLaengde() {
+        // Opretter 3 tidspunkter
         LocalTime[] tider = {
                 LocalTime.of(8,0),
                 LocalTime.of(12,0),
                 LocalTime.of(16,0)
         };
-
+        // Opretter 4 antal
         double[] antal = {1.0, 2.0, 3.0, 4.0};
 
         assertThrows(IllegalArgumentException.class, () -> {
