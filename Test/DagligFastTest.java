@@ -5,6 +5,8 @@ import ordination.Ordination;
 import ordination.Patient;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DagligFastTest {
@@ -19,7 +21,30 @@ class DagligFastTest {
         double actual = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
         //Assert
         assertEquals(expected, actual);
+    }
 
+    @Test
+    void anbefaletDosisPrDoegnNormalØvreGrænse() {
+        Controller controller = Controller.getTestController();
+        Patient patient = new Patient("121110-8765", "Luca", 120.00);
+        Laegemiddel laegemiddel = new Laegemiddel("Paracetamol", 1, 1.5, 2, "Styk");
+        //Act
+        double expected = 180.0;
+        double actual = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
+        //Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void anbefaletDosisPrDoegnNormalNedreGrænse() {
+        Controller controller = Controller.getTestController();
+        Patient patient = new Patient("121110-8765", "Lucaline", 25.00);
+        Laegemiddel laegemiddel = new Laegemiddel("Paracetamol", 1, 1.5, 2, "Styk");
+        //Act
+        double expected = 37.5;
+        double actual = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
+        //Assert
+        assertEquals(expected, actual);
 
     }
 
@@ -46,6 +71,12 @@ class DagligFastTest {
         double actual = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
         //Assert
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void opretDagligFast(){
+        Controller controller = Controller.getTestController();
 
     }
+    // opret controller daglig fast, og skæv, opret PN
 }
