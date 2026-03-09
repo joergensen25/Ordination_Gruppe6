@@ -39,7 +39,10 @@ public class Controller {
 			throw new IllegalArgumentException("Startdato skal være før eller lig med slutdato");
 		}
 		PN pn = new PN(startDen, slutDen, patient);
+		pn.setLaegemiddel(laegemiddel);
+
 		patient.addOrdination(pn);
+
 
 		return pn;
 	}
@@ -58,6 +61,8 @@ public class Controller {
 			throw new IllegalArgumentException("Startdato skal være før eller lig med slutdato");
 		}
 		DagligFast df = new DagligFast(startDen, slutDen, patient);
+		df.setLaegemiddel(laegemiddel);
+
 		patient.addOrdination(df);
 
 		return df;
