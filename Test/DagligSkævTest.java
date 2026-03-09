@@ -44,6 +44,4 @@ public class DagligSkævTest {
         assertEquals(6.0, ds.doegnDosis());
         assertEquals(30.0, ds.samletDosis());
     }
-
-
 }
