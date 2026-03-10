@@ -3,19 +3,29 @@ package ordination;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
+/**
+ * Modellerer en Ordination
+ */
 public abstract class Ordination {
     private LocalDate startDen;
     private LocalDate slutDen;
 
     private Laegemiddel laegemiddel;
 
-    // TODO constructor (med specifikation)
-    public Ordination(LocalDate startDen, LocalDate slutDen, Patient patient) {
-        if (slutDen.isBefore(startDen)){
+
+    /**
+     *
+     * Initialiserer en ny ordinations startDato, slutDato og putter på en patient
+     * Hvis Ordinationens slutdato er før startdatoen, bliver der kastet en exception
+     * Pre: startDato >= slutDato, patient != null.
+     *
+     */
+    public Ordination(LocalDate startDato, LocalDate slutDato, Patient patient) {
+        if (slutDato.isBefore(startDato)){
             throw new IllegalArgumentException("Startdato skal være før eller lig med slutdato");
         }
-        this.startDen = startDen;
-        this.slutDen = slutDen;
+        this.startDen = startDato;
+        this.slutDen = slutDato;
         patient.addOrdination(this);
     }
 

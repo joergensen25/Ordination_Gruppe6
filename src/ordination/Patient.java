@@ -40,6 +40,12 @@ public class Patient {
     }
 
     //TODO: Metoder (med specifikation) til at vedligeholde link til Ordination
+
+    /**
+     * Tilføjer en Ordination til Patient
+     * Sætter denne patient som ordinationens ejer.
+     * Pre: Ordination != null
+     */
     public void addOrdination(Ordination ordination) {
         if (!ordinationer.contains(ordination)) {
             ordinationer.add(ordination);
