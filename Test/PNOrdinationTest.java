@@ -23,8 +23,9 @@ class PNOrdinationTest {
         assertNotNull(pn);
         assertEquals(1, patient.getOrdinationer().size());
     }
+
     @Test
-    void opretPNSammedato(){
+    void opretPNSammedato() {
         Controller controller = Controller.getTestController();
         LocalDate startDato = LocalDate.of(2023, 1, 1);
         LocalDate slutDato = LocalDate.of(2023, 1, 1);
