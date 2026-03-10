@@ -12,7 +12,6 @@ public class OrdinationAntalDageTest {
 
     @Test
     void testAntalDageSammeDag() {
-        Laegemiddel lm = new Laegemiddel("Test", 1, 1, 1, "stk");
         Patient patient = new Patient("111111-1111", "Testperson", 67);
         PN pn = new PN(
                 LocalDate.of(2026, 1, 1),
@@ -24,7 +23,6 @@ public class OrdinationAntalDageTest {
 
     @Test
     void testAntalDageFlereDage() {
-        Laegemiddel lm = new Laegemiddel("Test", 1, 1, 1, "stk");
         Patient patient = new Patient("111111-1111", "Testperson", 67);
         PN pn = new PN(
                 LocalDate.of(2026, 1, 1),
@@ -37,7 +35,6 @@ public class OrdinationAntalDageTest {
 
     @Test
     void testAntalUgyldigDage() {
-        Laegemiddel lm = new Laegemiddel("Test", 1, 1, 1, "stk");
         Patient patient = new Patient("111111-1111", "Testperson", 67);
         LocalDate start = LocalDate.of(2026, 1, 4);
         LocalDate slut = LocalDate.of(2026, 1, 3);
