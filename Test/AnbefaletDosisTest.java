@@ -47,10 +47,10 @@ class AnbefaletDosisTest {
     @Test
     void anbefaletDosisPrDoegnLet() {
         Controller controller = Controller.getTestController();
-        Patient patient = new Patient("121110-8765", "Rasmusine", 15.00);
+        Patient patient = new Patient("121110-8765", "Rasmusine", 24.9);
         Laegemiddel laegemiddel = new Laegemiddel("Paracetamol", 1, 1.5, 2, "Styk");
         //Act
-        double expected = 15.0;
+        double expected = 24.9;
         double actual = controller.anbefaletDosisPrDoegn(patient, laegemiddel);
         //Assert
         assertEquals(expected, actual);

@@ -27,7 +27,7 @@ public class DagligSkævTest {
     }
 
     @Test
-    void testOpretDagligSkaev() {
+    void opretDagligSkaev() {
         // Opretter 3 tidspunkter
         LocalTime[] tider = {
                 LocalTime.of(8, 0),
@@ -47,6 +47,7 @@ public class DagligSkævTest {
 
         assertEquals(6.0, ds.doegnDosis());
         assertEquals(30.0, ds.samletDosis());
+
     }
 
     @Test
