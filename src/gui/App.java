@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class App {
-//HAllo
 	public static void main(String[] args) {
 		Application.launch(StartVindue.class);
 

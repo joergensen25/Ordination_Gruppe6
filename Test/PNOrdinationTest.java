@@ -1,5 +1,4 @@
 import controller.Controller;
-import ordination.DagligFast;
 import ordination.Laegemiddel;
 import ordination.PN;
 import ordination.Patient;
