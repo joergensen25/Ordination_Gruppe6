@@ -2,6 +2,7 @@ import controller.Controller;
 import ordination.Laegemiddel;
 import ordination.PN;
 import ordination.Patient;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -10,13 +11,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PNOrdinationTest {
 
+    private Controller controller;
+    private Laegemiddel laegemiddel;
+    private Patient patient;
+
+    // Bruger samme patient og lægemiddel til tests:
+    @BeforeEach
+    void setUp() {
+        controller = Controller.getTestController();
+        patient = new Patient("1111111", "Susram", 80.00);
+        laegemiddel = new Laegemiddel("Paracetamol", 1,
+                1.5, 2, "Styk");
+    }
+
     @Test
     void opretPNGyldigDato() {
-        Controller controller = Controller.getTestController();
         LocalDate startDato = LocalDate.of(2023, 1, 1);
         LocalDate slutDato = LocalDate.of(2023, 1, 10);
-        Patient patient = new Patient("1111111", "Susram", 80.00);
-        Laegemiddel laegemiddel = new Laegemiddel("Paracetamol", 1, 1.5, 2, "Styk");
+
         // Act
         PN pn = controller.opretPNOrdination(startDato, slutDato, patient, laegemiddel, 1);
         // Assert
@@ -26,11 +38,9 @@ class PNOrdinationTest {
 
     @Test
     void opretPNSammedato() {
-        Controller controller = Controller.getTestController();
         LocalDate startDato = LocalDate.of(2023, 1, 1);
         LocalDate slutDato = LocalDate.of(2023, 1, 1);
-        Patient patient = new Patient("1111111", "Susram", 80.00);
-        Laegemiddel laegemiddel = new Laegemiddel("Paracetamol", 1, 1.5, 2, "Styk");
+
         // Act
         PN pn = controller.opretPNOrdination(startDato, slutDato, patient, laegemiddel, 1);
         // Assert
@@ -40,11 +50,9 @@ class PNOrdinationTest {
 
     @Test
     void opretPnUgyldigDato() {
-        Controller controller = Controller.getTestController();
         LocalDate startDato = LocalDate.of(2023, 1, 10);
         LocalDate slutDato = LocalDate.of(2023, 1, 1);
-        Patient patient = new Patient("1111111", "Susram", 80.00);
-        Laegemiddel laegemiddel = new Laegemiddel("Paracetamol", 1, 1.5, 2, "Styk");
+
         // Act
         assertThrows(IllegalArgumentException.class, () -> {
             controller.opretPNOrdination(startDato, slutDato, patient, laegemiddel, 1);
@@ -52,6 +60,5 @@ class PNOrdinationTest {
         assertEquals(0, patient.getOrdinationer().size());
         // Assert
         assertEquals(0, patient.getOrdinationer().size());
-
     }
 }

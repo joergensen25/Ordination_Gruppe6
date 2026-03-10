@@ -55,17 +55,19 @@ public class Controller {
      * Pre: startDen, slutDen, patient og laegemiddel er ikke null
      * Pre: margenAntal, middagAntal, aftanAntal, natAntal >= 0
      */
-    public DagligFast opretDagligFastOrdination(LocalDate startDen,
-                                                LocalDate slutDen, Patient patient, Laegemiddel laegemiddel,
-                                                double morgenAntal, double middagAntal, double aftenAntal,
-                                                double natAntal) {
+    public DagligFast opretDagligFastOrdination(
+            LocalDate startDen, LocalDate slutDen,
+            Patient patient, Laegemiddel laegemiddel,
+            double morgenAntal, double middagAntal,
+            double aftenAntal, double natAntal) {
+
         if (!checkStartFoerSlut(startDen, slutDen)) {
             throw new IllegalArgumentException("Startdato skal være før eller lig med slutdato");
         }
+
         DagligFast df = new DagligFast(startDen, slutDen, patient);
         df.setLaegemiddel(laegemiddel);
         df.createDosis(morgenAntal, middagAntal, aftenAntal, natAntal);
-
         patient.addOrdination(df);
 
         return df;
@@ -105,7 +107,6 @@ public class Controller {
      * Pre: ordination og dato er ikke null
      */
     public void ordinationPNAnvendt(PN ordination, LocalDate dato) {
-        // TODO
         if (!ordination.givDosis(dato)) {
             throw new IllegalArgumentException("Datoen er udenfor ordinations gyldighedsperiode");
         }
@@ -135,10 +136,12 @@ public class Controller {
      */
     public int antalOrdinationerPrVægtPrLægemiddel(double vægtStart,
                                                    double vægtSlut, Laegemiddel laegemiddel) {
+
         int antal = 0;
 
         for (Patient patient : storage.getAllPatienter()) {
             double vaegt = patient.getVaegt();
+
             if (vaegt >= vægtStart && vaegt <= vægtSlut) {
                 for (Ordination ordination : patient.getOrdinationer()) {
                     if (ordination.getLaegemiddel() == laegemiddel) {
