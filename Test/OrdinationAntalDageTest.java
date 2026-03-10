@@ -1,12 +1,12 @@
 import ordination.Laegemiddel;
+import ordination.Ordination;
 import ordination.PN;
 import ordination.Patient;
 import org.junit.jupiter.api.Test;
-
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class OrdinationAntalDageTest {
 
@@ -21,6 +21,7 @@ public class OrdinationAntalDageTest {
 
         assertEquals(1, pn.antalDage());
     }
+
     @Test
     void testAntalDageFlereDage() {
         Laegemiddel lm = new Laegemiddel("Test", 1, 1, 1, "stk");
@@ -34,4 +35,16 @@ public class OrdinationAntalDageTest {
 
     }
 
+    @Test
+    void testAntalUgyldigDage() {
+        Laegemiddel lm = new Laegemiddel("Test", 1, 1, 1, "stk");
+        Patient patient = new Patient("111111-1111", "Testperson", 67);
+        LocalDate start = LocalDate.of(2026, 1, 4);
+        LocalDate slut = LocalDate.of(2026, 1, 3);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            new PN(start, slut, patient);
+        });
+        assertEquals("Startdato skal være før eller lig med slutdato", exception.getMessage());    }
 }
+

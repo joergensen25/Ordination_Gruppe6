@@ -11,6 +11,9 @@ public abstract class Ordination {
 
     // TODO constructor (med specifikation)
     public Ordination(LocalDate startDen, LocalDate slutDen, Patient patient) {
+        if (slutDen.isBefore(startDen)){
+            throw new IllegalArgumentException("Startdato skal være før eller lig med slutdato");
+        }
         this.startDen = startDen;
         this.slutDen = slutDen;
         patient.addOrdination(this);
