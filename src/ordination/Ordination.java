@@ -21,7 +21,7 @@ public abstract class Ordination {
      *
      */
     public Ordination(LocalDate startDato, LocalDate slutDato, Patient patient) {
-        if (slutDato.isBefore(startDato)){
+        if (slutDato.isBefore(startDato)) {
             throw new IllegalArgumentException("Startdato skal være før eller lig med slutdato");
         }
         this.startDen = startDato;

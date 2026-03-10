@@ -76,9 +76,9 @@ public class DagligSkævTest {
     void opretDagligSkaevForskelligLaengde() {
         // Opretter 3 tidspunkter
         LocalTime[] tider = {
-                LocalTime.of(8,0),
-                LocalTime.of(12,0),
-                LocalTime.of(16,0)
+                LocalTime.of(8, 0),
+                LocalTime.of(12, 0),
+                LocalTime.of(16, 0)
         };
         // Opretter 4 antal
         double[] antal = {1.0, 2.0, 3.0, 4.0};

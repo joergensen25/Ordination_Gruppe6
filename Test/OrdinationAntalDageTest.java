@@ -1,8 +1,8 @@
 import ordination.Laegemiddel;
-import ordination.Ordination;
 import ordination.PN;
 import ordination.Patient;
 import org.junit.jupiter.api.Test;
+
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -45,6 +45,7 @@ public class OrdinationAntalDageTest {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
             new PN(start, slut, patient);
         });
-        assertEquals("Startdato skal være før eller lig med slutdato", exception.getMessage());    }
+        assertEquals("Startdato skal være før eller lig med slutdato", exception.getMessage());
+    }
 }
 

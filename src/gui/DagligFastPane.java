@@ -65,7 +65,7 @@ public class DagligFastPane extends GridPane {
             return Double.parseDouble(textField.getText());
         }
     }
-    
+
     public void makeReadOnly() {
         txtMorgen.setEditable(false);
         txtMiddag.setEditable(false);

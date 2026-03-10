@@ -17,12 +17,12 @@ public class PN extends Ordination {
      * Registrerer at der er givet en dosis paa dagen givesDen
      * Returnerer true hvis givesDen er inden for ordinationens gyldighedsperiode og datoen huskes
      * Retrurner false ellers og datoen givesDen ignoreres
+     *
      * @param givesDen
      * @return
      */
     public boolean givDosis(LocalDate givesDen) {
-        if (givesDen.isBefore(getStartDen()) || givesDen.isAfter(getSlutDen()))
-        {
+        if (givesDen.isBefore(getStartDen()) || givesDen.isAfter(getSlutDen())) {
             return false;
         }
 
@@ -33,13 +33,12 @@ public class PN extends Ordination {
     @Override
     public double doegnDosis() {
         //(antal gange ordinationen er anvendt * antal enheder) / (antal dage mellem første og sidste givning)
-        if (anvendtOrdinationer.isEmpty())
-        {
+        if (anvendtOrdinationer.isEmpty()) {
             return 0;
         }
 
         double antalModtaget = anvendtOrdinationer.size() * antalEnheder;
-        double dageModtaget = ChronoUnit.DAYS.between(anvendtOrdinationer.getFirst(),anvendtOrdinationer.getLast()) + 1;
+        double dageModtaget = ChronoUnit.DAYS.between(anvendtOrdinationer.getFirst(), anvendtOrdinationer.getLast()) + 1;
 
         return antalModtaget / dageModtaget;
     }
@@ -56,6 +55,7 @@ public class PN extends Ordination {
 
     /**
      * Returnerer antal gange ordinationen er anvendt
+     *
      * @return
      */
     public int getAntalGangeGivet() {

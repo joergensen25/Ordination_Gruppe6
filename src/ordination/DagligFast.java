@@ -17,10 +17,10 @@ public class DagligFast extends Ordination {
     }
 
     public void createDosis(double morgen, double middag, double aften, double nat) {
-        doser[0] = new Dosis(LocalTime.of(6,0), morgen);
-        doser[1] = new Dosis(LocalTime.of(13,0), middag);
-        doser[2] = new Dosis(LocalTime.of(18,0), aften);
-        doser[3] = new Dosis(LocalTime.of(23,0), nat);
+        doser[0] = new Dosis(LocalTime.of(6, 0), morgen);
+        doser[1] = new Dosis(LocalTime.of(13, 0), middag);
+        doser[2] = new Dosis(LocalTime.of(18, 0), aften);
+        doser[3] = new Dosis(LocalTime.of(23, 0), nat);
     }
 
     @Override

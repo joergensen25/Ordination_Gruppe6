@@ -34,37 +34,37 @@ public class DagligSkaevPane extends GridPane {
         add(listDosis, 0, 1);
 
         btnOpret.setOnAction(event -> opretDosis());
-        
-		lblError.setTextFill(Color.RED);
-		add(lblError, 0, 2, 2, 1);
+
+        lblError.setTextFill(Color.RED);
+        add(lblError, 0, 2, 2, 1);
 
     }
 
     private void opretDosis() {
-		lblError.setText("");
-		String kl = txtTimeMinut.getText();
-		String mgd = txtMaengde.getText();
-		try {
-			double mdgdouble = Double.parseDouble(mgd);
-			if (mdgdouble <= 0) {
-				txtMaengde.clear();
-				lblError.setText("Mængde  eller klokkeslet er ikke korrekt format");
-				return;
-			}
-			int hour = Integer.parseInt(kl.substring(0, 2));
-			int minute = Integer.parseInt(kl.substring(3));
-			LocalTime.of(hour, minute);
-			String dosis = kl + " " + mgd;
-			listDosis.getItems().add(dosis);
-		} catch (NumberFormatException e) {
-			txtMaengde.clear();
-			txtTimeMinut.clear();
-			lblError.setText("Mængde  eller klokkeslet er ikke korrekt format");
-		} catch (DateTimeException e) {
-			txtTimeMinut.clear();
-			lblError.setText("Klokkeslet er ikke korrekt format");
+        lblError.setText("");
+        String kl = txtTimeMinut.getText();
+        String mgd = txtMaengde.getText();
+        try {
+            double mdgdouble = Double.parseDouble(mgd);
+            if (mdgdouble <= 0) {
+                txtMaengde.clear();
+                lblError.setText("Mængde  eller klokkeslet er ikke korrekt format");
+                return;
+            }
+            int hour = Integer.parseInt(kl.substring(0, 2));
+            int minute = Integer.parseInt(kl.substring(3));
+            LocalTime.of(hour, minute);
+            String dosis = kl + " " + mgd;
+            listDosis.getItems().add(dosis);
+        } catch (NumberFormatException e) {
+            txtMaengde.clear();
+            txtTimeMinut.clear();
+            lblError.setText("Mængde  eller klokkeslet er ikke korrekt format");
+        } catch (DateTimeException e) {
+            txtTimeMinut.clear();
+            lblError.setText("Klokkeslet er ikke korrekt format");
 
-		}
+        }
 
     }
 

@@ -31,15 +31,13 @@ public class Patient {
         this.navn = navn;
     }
 
-    public double getVaegt(){
+    public double getVaegt() {
         return vaegt;
     }
 
-    public void setVaegt(double vaegt){
+    public void setVaegt(double vaegt) {
         this.vaegt = vaegt;
     }
-
-    //TODO: Metoder (med specifikation) til at vedligeholde link til Ordination
 
     /**
      * Tilføjer en Ordination til Patient
@@ -53,7 +51,7 @@ public class Patient {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return navn + "  " + cprnr;
     }
 
